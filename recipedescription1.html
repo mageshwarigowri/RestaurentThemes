@@ -143,27 +143,88 @@
     <p class="text-gray-600 text-sm leading-relaxed mb-8">
       This hearty and easy stuffed shells with ground beef recipe is the perfect one pan meal that the whole family will love! Plus, it can be made ahead and frozen, so you have a delicious, make ahead meal ready for those busy nights when you don't have time to cook.
     </p>
-
+<hr class="my-8 border-gray-300">
     <!-- Ingredients -->
-    <div class="mb-8">
-      <h2 class="serif text-xl font-bold text-gray-800 mb-4">Ingredients:</h2>
-      <ul class="space-y-2 text-sm text-gray-700">
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>2 pieces chicken thighs</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>200g ground meat</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>5 whole eggs</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>2 cups boiled potatoes peeled</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>1/2 cup walnuts</li>
-      </ul>
+<div class="max-w-md bg-white p-6 rounded-xl shadow">
 
-      <h3 class="font-bold text-sm text-gray-700 mt-5 mb-3">For Dressing:</h3>
-      <ul class="space-y-2 text-sm text-gray-700">
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>2 cups blueberries, washed and picked over for stems</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>Fresh herbs, such as chopped parsley and/or cilantro</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>1 tablespoon honey (light brown sugar or maple syrup also works)</li>
-        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>300g Mayonnaise</li>
-      </ul>
-    </div>
+    <h2 class="text-xl font-bold text-gray-800 mb-4">Ingredients:</h2>
 
+    <ul class="space-y-3 text-sm text-gray-700">
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-red-500">✔</span>
+        </span>
+        <span class="item-text">2 pieces chicken thighs</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-red-500">✔</span>
+        </span>
+        <span class="item-text">200g ground meat</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-red-500">✔</span>
+        </span>
+        <span class="item-text">5 whole eggs</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-red-500">✔</span>
+        </span>
+        <span class="item-text">2 cups boiled potatoes peeled</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-red-500">✔</span>
+        </span>
+        <span class="item-text">1/2 cup walnuts</span>
+      </li>
+
+    </ul>
+
+    <!-- Dressing -->
+    <h3 class="font-bold text-sm text-gray-700 mt-6 mb-3">For Dressing:</h3>
+
+    <ul class="space-y-3 text-sm text-gray-700">
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-gray-500">✔</span>
+        </span>
+        <span class="item-text">2 cups blueberries</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-gray-500">✔</span>
+        </span>
+        <span class="item-text">Fresh herbs</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-gray-500">✔</span>
+        </span>
+        <span class="item-text">1 tablespoon honey</span>
+      </li>
+
+      <li onclick="toggleItem(this)" class="flex items-center gap-3 cursor-pointer">
+        <span class="circle w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+          <span class="tick hidden text-xs text-gray-500">✔</span>
+        </span>
+        <span class="item-text">300g Mayonnaise</span>
+      </li>
+
+    </ul>
+
+  </div>
+<hr class="my-8 border-gray-300">
     <!-- Nutrition -->
     <div class="border border-gray-200 rounded-xl overflow-hidden mb-10">
       <div class="bg-gray-50 px-5 py-3 border-b border-gray-200">
@@ -195,7 +256,12 @@
 
     <!-- Directions -->
     <div class="mb-10">
-      <h2 class="serif text-xl font-bold text-gray-800 mb-6">Directions:</h2>
+      <div class="flex items-center gap-4 mb-6">
+  <h2 class="serif text-xl font-bold text-gray-800 whitespace-nowrap">
+    Directions:
+  </h2>
+  <hr class="flex-grow border-gray-300">
+</div>
       <div class="space-y-10">
 
         <!-- Step 1 -->
@@ -441,28 +507,16 @@
   </div>
 </footer>
 
-<script>
-  let currentSlide = 0;
-  const totalSlides = 3;
-  const track = document.getElementById('recipeTrack');
-  const dots = document.getElementById('recipeDots').querySelectorAll('button');
+ <script>
+    function toggleItem(element) {
+      const tick = element.querySelector('.tick');
+      const text = element.querySelector('.item-text');
 
-  function goToSlide(index) {
-    currentSlide = index;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('bg-red-600', i === currentSlide);
-      dot.classList.toggle('bg-gray-300', i !== currentSlide);
-      dot.classList.toggle('w-5', i === currentSlide); // active dot wider
-      dot.classList.toggle('w-2.5', i !== currentSlide);
-    });
-  }
-
-  // Auto-advance every 3 seconds, loops back to 0
-  setInterval(() => {
-    goToSlide((currentSlide + 1) % totalSlides);
-  }, 3000);
-</script>
+      tick.classList.toggle('hidden');
+      text.classList.toggle('line-through');
+      text.classList.toggle('text-gray-400');
+    }
+  </script>
 </body>
 </html>
 
