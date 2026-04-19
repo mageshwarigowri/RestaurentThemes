@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Kitchen – Healthy recipes for busy people</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.google.com/share?selection.family=Manrope:wght@200..800" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #C0392B;
+      --red-light: #E74C3C;
+    }
+    body { font-family: 'Lato', sans-serif; }
+    h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+    /* hero overlay */
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 100%);
+    }
+
+    /* newsletter pill */
+    .newsletter-pill {
+      border: 2px solid var(--red);
+      border-radius: 4px;
+    }
+
+    /* card hover */
+    .recipe-card img { transition: transform .35s ease; }
+    .recipe-card:hover img { transform: scale(1.05); }
+
+    /* red banner */
+    .red-banner { background-color: var(--red); }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* fade-in on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .7s ease both; }
+    .delay-1 { animation-delay: .15s; }
+    .delay-2 { animation-delay: .30s; }
+    .delay-3 { animation-delay: .45s; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+<!-- ───────── TOP BAR ───────── -->
+<div class="bg-gray-100 text-center text-xs py-1.5 text-gray-500 tracking-wide">
+  Subscribe to our newsletter –
+  <a href="mailto:mykitchen@gmail.com" class="underline text-gray-700">mykitchen@gmail.com</a>
+</div>
+
+<!-- ───────── NAV ───────── -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex flex-col items-center">
+      <img src="./Assets/Images/logo.png" alt="My Kitchen">
+    </a>
+
+    <!-- Nav links -->
+    <nav class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
+      <a href="index.html" class="hover:text-red-600 transition-colors">Home</a>
+      <a href="recipeindex1.html" class="text-red-600 border-b-2 border-red-600 pb-0.5">Recipes</a>
+      <a href="blog.html" class="hover:text-red-600 transition-colors">Blog</a>
+      <a href="about.html" class="hover:text-red-600 transition-colors">About Me</a>
+    </nav>
+
+    <!-- Search -->
+    <div class="flex items-center border border-gray-300 rounded-full px-3 py-1.5 gap-2 text-sm">
+      <input type="text" placeholder="Search" class="outline-none w-28 bg-transparent text-sm"/>
+      <button class="bg-red-600 text-white rounded-full p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── MAIN LAYOUT ───────── -->
+<main class="max-w-6xl mx-auto px-6 py-10 flex gap-10">
+
+  <!-- ══════════ LEFT: ARTICLE ══════════ -->
+  <article class="flex-1 min-w-0">
+
+    <!-- Title -->
+    <h1 class="serif text-3xl font-bold text-gray-900 mb-4 leading-snug">
+Fudgy cherry brownies
+    </h1>
+
+    <!-- Author + social -->
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200 shrink-0">
+        <img src="./Assets/Images/profile.png" alt="Tiffy" class="w-full h-full object-cover"/>
+      </div>
+      <div>
+        <p class="font-bold text-sm text-gray-800">Tiffy</p>
+        <p class="text-xs text-gray-400">February 27, 2025</p>
+      </div>
+      <div class="flex gap-3 ml-2 text-gray-400">
+        <!-- Facebook -->
+        <a href="#"><svg class="h-4 w-4 hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0zm-11 4.5v-5h-2v-2h2v-1.5c0-2 1.2-3 2.9-3 .8 0 1.6.1 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3V9.5h2.6l-.3 2H13v5h-2z"/></svg></a>
+        <!-- Instagram -->
+        <a href="#"><svg class="h-4 w-4 hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.335-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.978 2.05.601 3.427.085 5.269 0 7.124-.014 8.404 0 8.813 0 12c0 3.187.014 3.596.072 4.876.085 1.855.601 3.697 1.978 5.074 1.377 1.377 3.219 1.893 5.074 1.978C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.074-1.978 1.377-1.377 1.893-3.219 1.978-5.074C23.986 15.596 24 15.187 24 12s-.014-3.596-.072-4.876c-.085-1.855-.601-3.697-1.978-5.074C20.573.673 18.731.157 16.876.072 15.596.014 15.187 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <!-- YouTube -->
+        <a href="#"><svg class="h-4 w-4 hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="w-full h-85 overflow-hidden rounded-xl mb-6">
+      <img src="./Assets/Images/recipe des 5.png"
+           alt="One Pot Lasagna" class="w-full h-full object-cover"/>
+    </div>
+
+    <!-- Meta badges -->
+    <div class="flex flex-wrap gap-5 text-xs text-gray-500 mb-6 border-b border-gray-100 pb-6">
+      <span class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 7v5l3 3"/></svg>
+        30 Minutes
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7"/></svg>
+        Super Easy
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        4 persons
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6v6l4 2M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+        Main Dish
+      </span>
+    </div>
+
+    <!-- Intro -->
+    <p class="text-gray-600 text-sm leading-relaxed mb-8">
+      This hearty and easy stuffed shells with ground beef recipe is the perfect one pan meal that the whole family will love! Plus, it can be made ahead and frozen, so you have a delicious, make ahead meal ready for those busy nights when you don't have time to cook.
+    </p>
+
+    <!-- Ingredients -->
+    <div class="mb-8">
+      <h2 class="serif text-xl font-bold text-gray-800 mb-4">Ingredients:</h2>
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>2 pieces chicken thighs</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>200g ground meat</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>5 whole eggs</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>2 cups boiled potatoes peeled</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-red-400 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span></span>1/2 cup walnuts</li>
+      </ul>
+
+      <h3 class="font-bold text-sm text-gray-700 mt-5 mb-3">For Dressing:</h3>
+      <ul class="space-y-2 text-sm text-gray-700">
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>2 cups blueberries, washed and picked over for stems</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>Fresh herbs, such as chopped parsley and/or cilantro</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>1 tablespoon honey (light brown sugar or maple syrup also works)</li>
+        <li class="flex items-center gap-3"><span class="w-4 h-4 rounded-full border-2 border-gray-300 shrink-0 flex items-center justify-center"><span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span></span>300g Mayonnaise</li>
+      </ul>
+    </div>
+
+    <!-- Nutrition -->
+    <div class="border border-gray-200 rounded-xl overflow-hidden mb-10">
+      <div class="bg-gray-50 px-5 py-3 border-b border-gray-200">
+        <span class="text-sm font-bold text-gray-700">Nutrition Information</span>
+      </div>
+      <div class="grid grid-cols-5 divide-x divide-gray-200 text-center">
+        <div class="py-4">
+          <p class="text-base font-bold text-gray-800">200g</p>
+          <p class="text-xs text-gray-400 mt-0.5">Fat</p>
+        </div>
+        <div class="py-4">
+          <p class="text-base font-bold text-gray-800">100g</p>
+          <p class="text-xs text-gray-400 mt-0.5">Protein</p>
+        </div>
+        <div class="py-4">
+          <p class="text-base font-bold text-gray-800">146g</p>
+          <p class="text-xs text-gray-400 mt-0.5">Sugar</p>
+        </div>
+        <div class="py-4">
+          <p class="text-base font-bold text-gray-800">436g</p>
+          <p class="text-xs text-gray-400 mt-0.5">Calories</p>
+        </div>
+        <div class="py-4">
+          <p class="text-base font-bold text-gray-800">24g</p>
+          <p class="text-xs text-gray-400 mt-0.5">Carbs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Directions -->
+    <div class="mb-10">
+      <h2 class="serif text-xl font-bold text-gray-800 mb-6">Directions:</h2>
+      <div class="space-y-10">
+
+        <!-- Step 1 -->
+        <div class="flex gap-5">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">1</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-sm text-gray-800 mb-2">Make the barbecue sauce:</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              In a medium saucepan, mix the tomato ketchup, brown sugar, apple cider vinegar, soy sauce, and Worcestershire sauce. Stir until the brown sugar is fully dissolved and the mixture is smooth. Sprinkle in the smoked paprika, garlic powder, onion powder, black pepper, and cayenne pepper (if using). Mix well to combine all the spices evenly into the sauce. Place the saucepan over medium heat and bring the sauce to a gentle simmer.
+            </p>
+            <!-- Step images -->
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="overflow-hidden rounded-lg h-56">
+                <img src="./Assets/Images/recipe des directn 1.png" class="w-full h-full object-cover" alt="step 1a"/>
+              </div>
+              <div class="overflow-hidden rounded-lg h-56">
+                <img src="./Assets/Images/recipe des directn 2.png" class="w-full h-full object-cover" alt="step 1b"/>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Once you're satisfied with the flavour, remove the sauce from heat and let it cool. Transfer the barbecue sauce into a glass jar or an airtight container. It can be refrigerated for up to two weeks, making it convenient for use in your cooking.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-5">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">2</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-sm text-gray-800 mb-2">Cook the chicken (or substitute 2 cups if shredded cooking chicken):</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              In a medium saucepan, mix the tomato ketchup, brown sugar, apple cider vinegar, soy sauce, and Worcestershire sauce. Stir until the brown sugar is fully dissolved and the mixture is smooth.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-5">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">3</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-sm text-gray-800 mb-2">Mix the chicken with the barbecue sauce:</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">
+              In a medium saucepan, mix the tomato ketchup, brown sugar, apple cider vinegar, soy sauce, and Worcestershire sauce. Stir until the brown sugar is fully dissolved and the mixture is smooth.
+            </p>
+            <div class="grid grid-cols-3 gap-3 mb-4">
+              <div class="overflow-hidden rounded-lg h-56">
+                <img src="./Assets/Images/recipe des directn 3.png" class="w-full h-full object-cover" alt="step 3a"/>
+              </div>
+              <div class="overflow-hidden rounded-lg h-56">
+                <img src="./Assets/Images/recipe des directn 4.png" class="w-full h-full object-cover" alt="step 3b"/>
+              </div>
+              <div class="overflow-hidden rounded-lg h-56">
+                <img src="./Assets/Images/recipe des directn 5.png" class="w-full h-full object-cover" alt="step 3c"/>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Once you're satisfied with the flavour, remove the sauce from heat and let it cool. Transfer the barbecue sauce into a glass jar or an airtight container. It can be refrigerated for up to two weeks, making it convenient for use in your cooking.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Try this also -->
+    <div class="mb-6">
+      <h2 class="serif text-xl font-bold text-gray-800 mb-5">Try this also</h2>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="recipe-card overflow-hidden rounded-xl shadow-xl border border-gray-100 cursor-pointer">
+          <div class="overflow-hidden h-56"><img src="./Assets/Images/readers fav 1.png" class="w-full h-full object-cover" alt="meal prep"/></div>
+          <p class="text-xs text-center text-gray-700 font-medium p-2 leading-snug">Time saving meal prep</p>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-xl shadow-xl border border-gray-100 cursor-pointer">
+          <div class="overflow-hidden h-56"><img src="./Assets/Images/readers fav 2.png" class="w-full h-full object-cover" alt="toddler"/></div>
+          <p class="text-xs text-center text-gray-700 font-medium p-2 leading-snug">Toddler friendly foods</p>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-xl shadow-xl border border-gray-100 cursor-pointer">
+          <div class="overflow-hidden h-56"><img src="./Assets/Images/readers fav 3.png" class="w-full h-full object-cover" alt="vegan"/></div>
+          <p class="text-xs text-center text-gray-700 font-medium p-2 leading-snug">10 must try vegan recipes</p>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-xl shadow-xl border border-gray-100 cursor-pointer">
+          <div class="overflow-hidden h-56"><img src="./Assets/Images/readers fav 4.png" class="w-full h-full object-cover" alt="canning"/></div>
+          <p class="text-xs text-center text-gray-700 font-medium p-2 leading-snug">Canning and preserving methods</p>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- ══════════ RIGHT: SIDEBAR ══════════ -->
+  <aside class="w-64 shrink-0 pt-2 space-y-8">
+
+    <!-- Latest Recipes -->
+    <div>
+      <h2 class="font-bold text-base text-gray-800 mb-4">Latest Recipes</h2>
+      <div class="space-y-4">
+
+        <a href="recipedescription1.html" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des 1.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Chickpea Salad"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Chickpea Salad</p>
+            <p class="text-xs text-gray-400 mt-0.5">April 25, 2025</p>
+          </div>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des2.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Crispy Corn"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Crispy Corn</p>
+            <p class="text-xs text-gray-400 mt-0.5">May 7, 2025</p>
+          </div>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des 3.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Barley Soup"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Barley Soup</p>
+            <p class="text-xs text-gray-400 mt-0.5">May 25, 2025</p>
+          </div>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des 4.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Mutton Rogan Josh"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Mutton Rogan Josh</p>
+            <p class="text-xs text-gray-400 mt-0.5">April 14, 2025</p>
+          </div>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des 5.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Hassel nut Cookies"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Hassel nut Cookies</p>
+            <p class="text-xs text-gray-400 mt-0.5">May 25, 2025</p>
+          </div>
+        </a>
+
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-14 h-14 rounded-lg overflow-hidden shrink-0">
+            <img src="./Assets/Images/latest recipe in des 6.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Zucchini Salad"/>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800 group-hover:text-red-600 transition-colors leading-snug">Zucchini Salad</p>
+            <p class="text-xs text-gray-400 mt-0.5">January 16, 2025</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Sidebar My Kitchen widget -->
+    <div class="border border-gray-200 rounded-xl p-5 text-center">
+      <img src="./Assets/Images/logo.png" alt="">
+      <p class="text-xs text-gray-400 mb-4">Healthy recipes for busy people</p>
+      <!-- Social -->
+      <div class="flex justify-center gap-3 text-gray-400 mb-4">
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0zm-11 4.5v-5h-2v-2h2v-1.5c0-2 1.2-3 2.9-3 .8 0 1.6.1 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3V9.5h2.6l-.3 2H13v5h-2z"/></svg>
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.335-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.978 2.05.601 3.427.085 5.269 0 7.124-.014 8.404 0 8.813 0 12c0 3.187.014 3.596.072 4.876.085 1.855.601 3.697 1.978 5.074 1.377 1.377 3.219 1.893 5.074 1.978C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.074-1.978 1.377-1.377 1.893-3.219 1.978-5.074C23.986 15.596 24 15.187 24 12s-.014-3.596-.072-4.876c-.085-1.855-.601-3.697-1.978-5.074C20.573.673 18.731.157 16.876.072 15.596.014 15.187 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <svg class="h-4 w-4 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      </div>
+      <!-- newsletter mini -->
+      <div class="flex gap-2">
+        <input type="email" placeholder="Enter your email address here"
+               class="flex-1 border border-gray-300 rounded px-2 py-1.5 text-xs outline-none focus:border-red-400 min-w-0"/>
+        <button class="bg-red-600 hover:bg-red-700 text-white px-2.5 py-1.5 rounded transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+      <p class="text-gray-400 text-xs mt-1.5">*Be informed about the latest recipes and workshops</p>
+    </div>
+
+    <!-- Instagram share -->
+    <div>
+      <p class="text-sm font-semibold text-gray-700 text-center mb-3">Share your meals with us on <span class="text-red-600">Instagram</span></p>
+      <div class="grid grid-cols-3 gap-1.5">
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 1.png" class="w-full h-full object-cover" alt="ig1"/></div>
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 2.png" class="w-full h-full object-cover" alt="ig2"/></div>
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 3.png" class="w-full h-full object-cover" alt="ig3"/></div>
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 4.png" class="w-full h-full object-cover" alt="ig4"/></div>
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 5.png" class="w-full h-full object-cover" alt="ig5"/></div>
+        <div class="overflow-hidden rounded-md h-20 recipe-card"><img src="./Assets/Images/share image insta in des 6.png" class="w-full h-full object-cover" alt="ig6"/></div>
+      </div>
+    </div>
+
+  </aside>
+
+</main>
+<!-- ───────── FOOTER ───────── -->
+<footer class="border-t border-gray-100 pt-12 pb-6 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col items-center text-center gap-4">
+    <!-- Logo -->
+    <div class="flex flex-col items-center">
+      <img src="./Assets/Images/logo.png" alt="My Kitchen Logo">
+      <p class="text-gray-400 text-xs mt-1 tracking-wider">Healthy recipes for busy people</p>
+    </div>
+
+    <!-- Social icons -->
+    <div class="flex gap-5 text-gray-500">
+      <!-- Twitter/X -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <!-- Facebook -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0zm-11 4.5v-5h-2v-2h2v-1.5c0-2 1.2-3 2.9-3 .8 0 1.6.1 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3V9.5h2.6l-.3 2H13v5h-2z"/></svg>
+      <!-- Instagram -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.335-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.978 2.05.601 3.427.085 5.269 0 7.124-.014 8.404 0 8.813 0 12c0 3.187.014 3.596.072 4.876.085 1.855.601 3.697 1.978 5.074 1.377 1.377 3.219 1.893 5.074 1.978C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.074-1.978 1.377-1.377 1.893-3.219 1.978-5.074C23.986 15.596 24 15.187 24 12s-.014-3.596-.072-4.876c-.085-1.855-.601-3.697-1.978-5.074C20.573.673 18.731.157 16.876.072 15.596.014 15.187 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      <!-- YouTube -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      <!-- LinkedIn -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <!-- Pinterest -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </div>
+
+    <!-- Footer newsletter -->
+    <div class="flex gap-3 mt-2">
+      <input type="email" placeholder="Enter your email address here"
+             class="border border-gray-300 rounded px-4 py-2 text-sm outline-none focus:border-red-400 w-64"/>
+      <button class="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+    <p class="text-gray-400 text-xs">*Be informed about the latest recipes and workshops</p>
+
+    <!-- Bottom bar -->
+    <div class="w-full flex flex-col md:flex-row justify-between items-center text-gray-400 text-xs mt-6 pt-6 border-t border-gray-100 gap-2">
+      <a href="#" class="hover:text-red-600 transition-colors">Privacy Policy</a>
+      <p>copyrights 2022 © my kitchen</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 3;
+  const track = document.getElementById('recipeTrack');
+  const dots = document.getElementById('recipeDots').querySelectorAll('button');
+
+  function goToSlide(index) {
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-red-600', i === currentSlide);
+      dot.classList.toggle('bg-gray-300', i !== currentSlide);
+      dot.classList.toggle('w-5', i === currentSlide); // active dot wider
+      dot.classList.toggle('w-2.5', i !== currentSlide);
+    });
+  }
+
+  // Auto-advance every 3 seconds, loops back to 0
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }, 3000);
+</script>
+</body>
+</html>
+

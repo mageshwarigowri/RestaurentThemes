@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Kitchen – Healthy recipes for busy people</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.google.com/share?selection.family=Manrope:wght@200..800" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #C0392B;
+      --red-light: #E74C3C;
+    }
+    body { font-family: 'Lato', sans-serif; }
+    h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+    /* hero overlay */
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 100%);
+    }
+
+    /* newsletter pill */
+    .newsletter-pill {
+      border: 2px solid var(--red);
+      border-radius: 4px;
+    }
+
+    /* card hover */
+    .recipe-card img { transition: transform .35s ease; }
+    .recipe-card:hover img { transform: scale(1.05); }
+
+    /* red banner */
+    .red-banner { background-color: var(--red); }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* fade-in on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .7s ease both; }
+    .delay-1 { animation-delay: .15s; }
+    .delay-2 { animation-delay: .30s; }
+    .delay-3 { animation-delay: .45s; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+<!-- ───────── TOP BAR ───────── -->
+<div class="bg-gray-100 text-center text-xs py-1.5 text-gray-500 tracking-wide">
+  Subscribe to our newsletter –
+  <a href="mailto:mykitchen@gmail.com" class="underline text-gray-700">mykitchen@gmail.com</a>
+</div>
+
+<!-- ───────── NAV ───────── -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="flex flex-col items-center">
+      <img src="./Assets/Images/logo.png" alt="My Kitchen">
+    </a>
+
+    <!-- Nav links -->
+    <nav class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase">
+      <a href="index.html" class="text-red-600 border-b-2 border-red-600 pb-0.5">Home</a>
+      <a href="recipeindex1.html" class="hover:text-red-600 transition-colors">Recipes</a>
+      <a href="blog.html" class="hover:text-red-600 transition-colors">Blog</a>
+      <a href="about.html" class="hover:text-red-600 transition-colors">About Me</a>
+    </nav>
+
+    <!-- Search -->
+    <div class="flex items-center border border-gray-300 rounded-full px-3 py-1.5 gap-2 text-sm">
+      <input type="text" placeholder="Search" class="outline-none w-28 bg-transparent text-sm"/>
+      <button class="bg-red-600 text-white rounded-full p-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ───────── HERO ───────── -->
+<section class="relative h-[520px] md:h-[600px] overflow-hidden">
+  <!-- placeholder image via gradient + food illustration feel -->
+  <div class="absolute inset-0 bg-gradient-to-br from-amber-100 via-orange-100 to-red-50">
+    <!-- decorative circles mimicking food photography bokeh -->
+    <div class="absolute -top-16 -right-16 w-80 h-80 bg-amber-200 rounded-full opacity-40"></div>
+    <div class="absolute bottom-0 left-10 w-60 h-60 bg-orange-200 rounded-full opacity-30"></div>
+    <img src="./Assets/Images/hero image.png"
+         alt="Food hero" class="absolute inset-0 w-full h-full object-cover"/>
+    <div class="hero-overlay absolute inset-0"></div>
+  </div>
+  <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+    <p class="text-red-300 uppercase tracking-widest text-sm mb-3 fade-up">Welcome to My Kitchen</p>
+    <h1 class="text-white text-4xl md:text-6xl leading-tight mb-4 fade-up delay-1">
+      Sharing my love<br/><em>for food</em>
+    </h1>
+    <p class="text-gray-200 max-w-md text-base leading-relaxed mb-8 fade-up delay-2">
+      I'm excited to share my passion for all things culinary. Food is not just about nourishment: it's an experience that brings people together, evokes memories, and sparks creativity.
+    </p>
+    <a href="#" class="fade-up delay-3 bg-red-600 hover:bg-red-700 transition-colors text-white uppercase tracking-widest text-xs font-bold px-8 py-3 rounded-sm flex items-center gap-2">
+      Get in Touch
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ───────── FEATURED RECIPES (2-UP CAROUSEL) ───────── -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+
+  <!-- Carousel Wrapper -->
+  <div class="relative overflow-hidden">
+    <div id="recipeTrack" class="flex transition-transform duration-700 ease-in-out">
+
+      <!-- Slide 1: Starter + Main Course -->
+      <div class="min-w-full grid md:grid-cols-2 gap-8">
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+           <a href="recipedescription1.html"> <img src="./Assets/Images/starter.png" alt="Caprese Salad Skewers" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Starter</p>
+            <h3 class="serif text-xl text-gray-800">Caprese Salad Skewers</h3>
+          </div>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+           <a href="recipedescription1.html"> <img src="./Assets/Images/mani course.png" alt="Grilled Lemon Herb Chicken" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Main Course</p>
+            <h3 class="serif text-xl text-gray-800">Grilled Lemon Herb Chicken</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Bites + Side Dish -->
+      <div class="min-w-full grid md:grid-cols-2 gap-8">
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+            <a href="recipedescription1.html"> <img src="./Assets/Images/bites.png" alt="Stuffed Mini Peppers" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Bites</p>
+            <h3 class="serif text-xl text-gray-800">Stuffed Mini Peppers</h3>
+          </div>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+            <a href="recipedescription1.html"> <img src="./Assets/Images/side dish.png" alt="Garlic Mashed Potatoes" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Side Dish</p>
+            <h3 class="serif text-xl text-gray-800">Garlic Mashed Potatoes</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Dessert + Platters -->
+      <div class="min-w-full grid md:grid-cols-2 gap-8">
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+            <a href="recipedescription1.html"><img src="./Assets/Images/dessert.png" alt="Chocolate Mousse" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Dessert</p>
+            <h3 class="serif text-xl text-gray-800">Chocolate Mousse</h3>
+          </div>
+        </div>
+        <div class="recipe-card overflow-hidden rounded-lg shadow group cursor-pointer">
+          <div class="overflow-hidden h-64">
+            <a href="recipedescription1.html"><img src="./Assets/Images/platter.png" alt="Sea Food Platter" class="w-full h-full object-cover"/></a>
+          </div>
+          <div class="p-4">
+            <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-1">Platters</p>
+            <h3 class="serif text-xl text-gray-800">Sea Food Platter</h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dot Indicators -->
+  <div class="flex justify-center gap-2 mt-6" id="recipeDots">
+    <button onclick="goToSlide(0)" class="w-2.5 h-2.5 rounded-full bg-red-600 transition-all"></button>
+    <button onclick="goToSlide(1)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></button>
+    <button onclick="goToSlide(2)" class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></button>
+  </div>
+
+</section>
+
+<!-- ───────── NEWSLETTER INLINE STRIP ───────── -->
+<section class="max-w-6xl mx-auto px-6 pb-12">
+  <div class="newsletter-pill px-8 py-6 flex flex-col md:flex-row items-center gap-4">
+    <div class="min-w-max">
+      <p class="text-red-600 text-xs uppercase tracking-widest font-bold">New recipes</p>
+      <p class="serif text-2xl font-bold text-gray-800">Straight to your inbox</p>
+    </div>
+    <div class="flex flex-1 gap-3 w-full">
+      <input type="text" placeholder="Enter your name"
+             class="flex-1 border border-gray-300 rounded px-3 py-2 text-sm outline-none focus:border-red-400"/>
+      <input type="email" placeholder="Enter your email address here"
+             class="flex-1 border border-gray-300 rounded px-3 py-2 text-sm outline-none focus:border-red-400"/>
+      <button class="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── LATEST RECIPES ───────── -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="serif text-2xl font-bold text-gray-800">Latest Recipes</h2>
+    <a href="recipeindex1.html" class="text-red-600 text-sm font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">
+      View All <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+    <!-- Card 1 -->
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription1.html">
+          <img src="./Assets/Images/latest recipes 1.png" class="w-full h-full object-cover" alt="Chickpea salad"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Chickpea and sprouts salad</p>
+    </div>
+    <!-- Card 2 -->
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription2.html">
+          <img src="./Assets/Images/latest recipes 2.png" class="w-full h-full object-cover" alt="Chocolate mousse"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">High protein chocolate mousse</p>
+    </div>
+    <!-- Card 3 -->
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription3.html">
+          <img src="./Assets/Images/latest recipes 3.png" class="w-full h-full object-cover" alt="Lamb chops"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Big mac lamb chops and veggies</p>
+    </div>
+    <!-- Card 4 -->
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription4.html">
+          <img src="./Assets/Images/latest recipes 4.png" class="w-full h-full object-cover" alt="Apple crumble"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Healthy apple crumble</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TIFFY BANNER ───────── -->
+<section class="red-banner text-white py-12 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="text-center md:text-left">
+      <h2 class="serif text-3xl font-bold mb-1">Hello there! I am Tiffy.</h2>
+      <p class="text-red-200 mb-4">Start cooking with me</p>
+      <!-- social icons -->
+      <div class="flex gap-4 justify-center md:justify-start text-white mb-6">
+        <svg class="h-5 w-5 cursor-pointer hover:text-red-200 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0zm-11 4.5v-5h-2v-2h2v-1.5c0-2 1.2-3 2.9-3 .8 0 1.6.1 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3V9.5h2.6l-.3 2H13v5h-2z"/></svg>
+        <svg class="h-5 w-5 cursor-pointer hover:text-red-200 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.335-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.978 2.05.601 3.427.085 5.269 0 7.124-.014 8.404 0 8.813 0 12c0 3.187.014 3.596.072 4.876.085 1.855.601 3.697 1.978 5.074 1.377 1.377 3.219 1.893 5.074 1.978C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.074-1.978 1.377-1.377 1.893-3.219 1.978-5.074C23.986 15.596 24 15.187 24 12s-.014-3.596-.072-4.876c-.085-1.855-.601-3.697-1.978-5.074C20.573.673 18.731.157 16.876.072 15.596.014 15.187 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <svg class="h-5 w-5 cursor-pointer hover:text-red-200 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      </div>
+      <a href="#" class="border border-white text-white text-xs uppercase tracking-widest px-6 py-2 hover:bg-white hover:text-red-600 transition-colors font-bold">View More</a>
+    </div>
+    <!-- Avatar circle -->
+    <div class="w-36 h-36 rounded-full overflow-hidden border-4 border-red-300 shrink-0">
+      <img src="./Assets/Images/profile.png" alt="Tiffy" class="w-full h-full object-cover"/>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── READERS FAVOURITES ───────── -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="serif text-2xl font-bold text-gray-800">Readers Favourites</h2>
+    <a href="blog.html" class="text-red-600 text-sm font-bold uppercase tracking-widest flex items-center gap-1 hover:underline">
+      View All <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+       <a href="recipedescription1.html">
+         <img src="./Assets/Images/readers fav 1.png" class="w-full h-full object-cover" alt="Meal prep"/>
+       </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Time saving meal prep</p>
+    </div>
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription2.html">
+          <img src="./Assets/Images/readers fav 2.png" class="w-full h-full object-cover" alt="Toddler food"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Toddler friendly foods</p>
+    </div>
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription3.html">
+          <img src="./Assets/Images/readers fav 3.png" class="w-full h-full object-cover" alt="Vegan recipes"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">10 must-try vegan recipes</p>
+    </div>
+    <div class="recipe-card cursor-pointer">
+      <div class="overflow-hidden rounded-lg h-44">
+        <a href="recipedescription4.html">
+          <img src="./Assets/Images/readers fav 4.png" class="w-full h-full object-cover" alt="Canning"/>
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mt-2 text-center font-medium">Canning and preserving methods</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── NEWSLETTER FULL ───────── -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+  <div class="border border-red-200 rounded-lg py-10 px-8 text-center">
+    <p class="text-red-600 text-xs uppercase tracking-widest font-bold mb-2">Our Newsletter</p>
+    <h2 class="serif text-2xl font-bold text-gray-800 mb-2">Subscribe to our newsletter</h2>
+    <p class="text-gray-500 text-sm mb-6">& keep up with our latest recipes and organized workshops.</p>
+    <div class="flex max-w-md mx-auto gap-3">
+      <input type="email" placeholder="Enter your email address here"
+             class="flex-1 border border-gray-300 rounded px-4 py-2.5 text-sm outline-none focus:border-red-400"/>
+      <button class="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── INSTAGRAM STRIP ───────── -->
+<section class="max-w-6xl mx-auto px-6 pb-16 text-center">
+  <p class="text-gray-700 font-medium mb-6">Share Your Meals On Instagram With <span class="text-red-600 font-bold">#mykitchen</span><br/>&amp; We Will Reward The Meal Of The Month!</p>
+  <div class="grid grid-cols-5 gap-5">
+    <div class="overflow-hidden rounded-lg h-56 recipe-card"><img src="./Assets/Images/insta 1.png" class="w-full h-full object-cover" alt="IG 1"/></div>
+    <div class="overflow-hidden rounded-lg h-56 recipe-card"><img src="./Assets/Images/insta 2.png" class="w-full h-full object-cover" alt="IG 2"/></div>
+    <div class="overflow-hidden rounded-lg h-56 recipe-card"><img src="./Assets/Images/insta 3.png" class="w-full h-full object-cover" alt="IG 3"/></div>
+    <div class="overflow-hidden rounded-lg h-56 recipe-card"><img src="./Assets/Images/insta 4.png" class="w-full h-full object-cover" alt="IG 4"/></div>
+     <div class="overflow-hidden rounded-lg h-56 recipe-card"><img src="./Assets/Images/insta 5.png" class="w-full h-full object-cover" alt="IG 4"/></div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer class="border-t border-gray-100 pt-12 pb-6 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col items-center text-center gap-4">
+    <!-- Logo -->
+    <div class="flex flex-col items-center">
+      <img src="./Assets/Images/logo.png" alt="My Kitchen Logo">
+      <p class="text-gray-400 text-xs mt-1 tracking-wider">Healthy recipes for busy people</p>
+    </div>
+
+    <!-- Social icons -->
+    <div class="flex gap-5 text-gray-500">
+      <!-- Twitter/X -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <!-- Facebook -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 2 12a10 10 0 0 0 20 0zm-11 4.5v-5h-2v-2h2v-1.5c0-2 1.2-3 2.9-3 .8 0 1.6.1 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3V9.5h2.6l-.3 2H13v5h-2z"/></svg>
+      <!-- Instagram -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.335-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 1.978 2.05.601 3.427.085 5.269 0 7.124-.014 8.404 0 8.813 0 12c0 3.187.014 3.596.072 4.876.085 1.855.601 3.697 1.978 5.074 1.377 1.377 3.219 1.893 5.074 1.978C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.074-1.978 1.377-1.377 1.893-3.219 1.978-5.074C23.986 15.596 24 15.187 24 12s-.014-3.596-.072-4.876c-.085-1.855-.601-3.697-1.978-5.074C20.573.673 18.731.157 16.876.072 15.596.014 15.187 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      <!-- YouTube -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      <!-- LinkedIn -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <!-- Pinterest -->
+      <svg class="h-5 w-5 cursor-pointer hover:text-red-600 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </div>
+
+    <!-- Footer newsletter -->
+    <div class="flex gap-3 mt-2">
+      <input type="email" placeholder="Enter your email address here"
+             class="border border-gray-300 rounded px-4 py-2 text-sm outline-none focus:border-red-400 w-64"/>
+      <button class="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+    <p class="text-gray-400 text-xs">*Be informed about the latest recipes and workshops</p>
+
+    <!-- Bottom bar -->
+    <div class="w-full flex flex-col md:flex-row justify-between items-center text-gray-400 text-xs mt-6 pt-6 border-t border-gray-100 gap-2">
+      <a href="#" class="hover:text-red-600 transition-colors">Privacy Policy</a>
+      <p>copyrights 2022 © my kitchen</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 3;
+  const track = document.getElementById('recipeTrack');
+  const dots = document.getElementById('recipeDots').querySelectorAll('button');
+
+  function goToSlide(index) {
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-red-600', i === currentSlide);
+      dot.classList.toggle('bg-gray-300', i !== currentSlide);
+      dot.classList.toggle('w-5', i === currentSlide); // active dot wider
+      dot.classList.toggle('w-2.5', i !== currentSlide);
+    });
+  }
+
+  // Auto-advance every 3 seconds, loops back to 0
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % totalSlides);
+  }, 3000);
+</script>
+</body>
+</html>
